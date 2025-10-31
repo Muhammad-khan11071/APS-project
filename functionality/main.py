@@ -30,9 +30,12 @@ def list_formats(url: str):
     Returns the available download formats for <url>
     
     Returns:
-        list: a list of dicts, with each dict representing a download format
+        dict: a dict with the following keys:
+        title: video title
+        audio_formats: list of dicts, with each dict representing an audio format
+        video_formats: list of dicts, with each dict representing an video format
     
-    # Keys of each dict:
+    # Keys of each dict in audio_format and video_format:
         format_id, resolution, acodec, vcodec
 
     """
@@ -44,7 +47,7 @@ def list_formats(url: str):
     audio_formats = []
     video_formats = []
     
-    standard_resolutions = ['144p',21]
+    standard_resolutions = ['144p', '240p', '360p', '480p', '720p', '1080p']
     
     for format in formats:
         # parsing useful data form each format dict
